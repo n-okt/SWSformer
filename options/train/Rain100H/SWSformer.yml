@@ -1,0 +1,105 @@
+# general settings
+name: SWSformer-Rain100H
+model_type: ImageRestorationModel
+scale: 1
+num_gpu: 1
+manual_seed: 1111
+
+datasets:
+  train:
+    name: Rain100H
+    type: PairedImageDataset
+    dataroot_gt: ./datasets/Rain100H/train/gt
+    dataroot_lq: ./datasets/Rain100H/train/data
+
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+    gt_size: 256
+    use_flip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 8
+    batch_size_per_gpu: 6
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: Rain100H
+    type: PairedImageDataset
+    dataroot_gt: ./datasets/Rain100H/test/gt
+    dataroot_lq: ./datasets/Rain100H/test/data
+    io_backend:
+      type: disk
+
+network_g:
+  type: SWSformer
+  width: 64
+  enc_blk_nums: [2, 2, 4, 8]
+  middle_blk_num: 12
+  dec_blk_nums: [2, 2, 2, 2]
+  win_size: 16
+  sub_win_size: 8
+  nwc_ks: [7, 5, 3, 3, 3]
+  qkv_bias: True
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: true
+  resume_state: ~
+
+# training settings
+train:
+  optim_g:
+    type: AdamW
+    lr: !!float 1e-3
+    weight_decay: 0.
+    betas: [0.9, 0.9]
+
+  scheduler:
+    type: TrueCosineAnnealingLR
+    T_max: 8400
+    eta_min: !!float 1e-7
+
+  total_iter: 8400
+  warmup_iter: -1 # no warm up
+
+  # losses
+  pixel_opt:
+    type: PSNRLoss
+    loss_weight: 1
+    reduction: mean
+
+# validation settings
+val:
+  val_freq: !!float 8401
+  save_img: false
+  use_image: false
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: true
+
+# logging settings
+logger:
+  print_freq: 210
+  save_checkpoint_freq: 8401
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
