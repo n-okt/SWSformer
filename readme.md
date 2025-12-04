@@ -1,4 +1,5 @@
-[github](https://github.com/n-okt/SWSformer)
+
+Please visit [github](https://github.com/n-okt/SWSformer) if you are currently viewing a github-pages.
 
 ## SWSformer: Subwindow Shuffle Transformer for Image Restoration
 
