@@ -46,17 +46,40 @@
         <p class="abstract-text">
           We propose <strong>SWSformer (Subwindow Shuffle Transformer)</strong>, a highly efficient and novel Transformer-based architecture for image restoration. By introducing a subwindow shuffle mechanism, our model significantly reduces computational overhead while effectively capturing both local and global dependencies, achieving state-of-the-art performance in various image restoration tasks such as denoising and deblurring.
         </p>
+    </section>
 
+    <section class="section">
+      <div class="container">
         <h3 class="comparison-title">Visual Comparison</h3>
         <p class="abstract-text text-center subtitle">
-          Adjust the slider to compare the input degraded image with the restored result.
+          Adjust the sliders to compare the results.
         </p>
         
-        <div id="image-comparison-widget" class="comparison-container">
-          <img src="assets/images/comparison/input.png" alt="Input degraded image" class="img-base" />
-          <img src="assets/images/comparison/output.png" alt="Restored output image" class="img-overlay" id="imgOverlay" />
-          <div class="comparison-line" id="comparisonLine"></div>
-          <input type="range" min="0" max="100" value="50" class="comparison-slider" id="comparisonSlider" aria-label="Image comparison slider">
+        <div class="comparison-grid">
+          
+          <div class="comparison-container">
+            <img src="assets/images/comparison/input1.png" alt="Input 1" class="img-base" />
+            <img src="assets/images/comparison/output1.png" alt="Output 1" class="img-overlay" />
+            <div class="comparison-line"></div>
+            <div class="comparison-handle"></div> <input type="range" min="0" max="100" value="50" class="comparison-slider">
+          </div>
+    
+          <div class="comparison-container">
+            <img src="assets/images/comparison/input2.png" alt="Input 2" class="img-base" />
+            <img src="assets/images/comparison/output2.png" alt="Output 2" class="img-overlay" />
+            <div class="comparison-line"></div>
+            <div class="comparison-handle"></div>
+            <input type="range" min="0" max="100" value="50" class="comparison-slider">
+          </div>
+    
+          <div class="comparison-container">
+            <img src="assets/images/comparison/input3.png" alt="Input 3" class="img-base" />
+            <img src="assets/images/comparison/output3.png" alt="Output 3" class="img-overlay" />
+            <div class="comparison-line"></div>
+            <div class="comparison-handle"></div>
+            <input type="range" min="0" max="100" value="50" class="comparison-slider">
+          </div>
+    
         </div>
       </div>
     </section>
@@ -102,17 +125,23 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const slider = document.getElementById('comparisonSlider');
-      const overlay = document.getElementById('imgOverlay');
-      const line = document.getElementById('comparisonLine');
-  
+  document.addEventListener('DOMContentLoaded', function() {
+    const containers = document.querySelectorAll('.comparison-container');
+
+    containers.forEach(container => {
+      const slider = container.querySelector('.comparison-slider');
+      const overlay = container.querySelector('.img-overlay');
+      const line = container.querySelector('.comparison-line');
+      const handle = container.querySelector('.comparison-handle');
+
       slider.addEventListener('input', function(e) {
-        const sliderValue = e.target.value;
-        overlay.style.clipPath = `inset(0 ${100 - sliderValue}% 0 0)`;
-        line.style.left = `${sliderValue}%`;
+        const value = e.target.value;
+        overlay.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+        line.style.left = `${value}%`;
+        handle.style.left = `${value}%`;
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>
