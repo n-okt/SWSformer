@@ -4,35 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project Page | SWSformer</title>
-  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
   <header class="hero section">
     <div class="container">
       <h1>SWSformer: Subwindow Shuffle Transformer for Image Restoration</h1>
-      
       <div class="authors">
         <span><a class="author-link" href="#">Nagayuki Okitsu</a><sup>1</sup></span>
         <span><a class="author-link" href="#">Co-Author Name</a><sup>1</sup></span>
       </div>
-      
-      <p class="affiliations">
-        <sup>1</sup>Shimane University
-      </p>
-
+      <p class="affiliations"><sup>1</sup>Shimane University</p>
       <p class="venue">IEEE Access 2025</p>
-      
       <div class="button-row">
         <a class="btn btn-primary" href="#">📄 Paper</a>
         <a class="btn btn-primary" href="https://github.com/n-okt">
-          <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-          </svg>
+          <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           Code
         </a>
       </div>
@@ -46,115 +36,99 @@
         <p class="abstract-text">
           We propose <strong>SWSformer (Subwindow Shuffle Transformer)</strong>, a highly efficient and novel Transformer-based architecture for image restoration. By introducing a subwindow shuffle mechanism, our model significantly reduces computational overhead while effectively capturing both local and global dependencies.
         </p>
-    
+
         <div class="results-frame">
           <h2 class="results-title">Denoising Results</h2>
-          <div class="results-grid cols-3">
+          <div class="results-grid">
             <div class="comparison-container">
-              <img src="assets/images/comparison/denoising/input1.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/denoising/output1.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/denoising/input1.png" class="img-base" />
+              <img src="assets/images/comparison/denoising/output1.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
             <div class="comparison-container">
-              <img src="assets/images/comparison/denoising/input2.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/denoising/output2.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/denoising/input2.png" class="img-base" />
+              <img src="assets/images/comparison/denoising/output2.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
             <div class="comparison-container">
-              <img src="assets/images/comparison/denoising/input3.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/denoising/output3.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/denoising/input3.png" class="img-base" />
+              <img src="assets/images/comparison/denoising/output3.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
           </div>
         </div>
-    
+
         <div class="results-frame">
           <h2 class="results-title">Deblurring Results</h2>
-          <div class="results-grid cols-2">
+          <div class="results-grid">
             <div class="comparison-container">
-              <img src="assets/images/comparison/deblurring/input1.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/deblurring/output1.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/deblurring/input1.png" class="img-base" />
+              <img src="assets/images/comparison/deblurring/output1.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
             <div class="comparison-container">
-              <img src="assets/images/comparison/deblurring/input2.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/deblurring/output2.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/deblurring/input2.png" class="img-base" />
+              <img src="assets/images/comparison/deblurring/output2.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
           </div>
         </div>
-    
+
         <div class="results-frame">
           <h2 class="results-title">Deraining Results</h2>
-          <div class="results-grid cols-2">
+          <div class="results-grid">
             <div class="comparison-container">
-              <img src="assets/images/comparison/deraining/input1.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/deraining/output1.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/deraining/input1.png" class="img-base" />
+              <img src="assets/images/comparison/deraining/output1.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
             <div class="comparison-container">
-              <img src="assets/images/comparison/deraining/input2.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/deraining/output2.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/deraining/input2.png" class="img-base" />
+              <img src="assets/images/comparison/deraining/output2.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
           </div>
         </div>
-    
+
         <div class="results-frame">
           <h2 class="results-title">Desnowing Results</h2>
-          <div class="results-grid cols-2">
+          <div class="results-grid">
             <div class="comparison-container">
-              <img src="assets/images/comparison/desnowing/input1.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/desnowing/output1.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/desnowing/input1.png" class="img-base" />
+              <img src="assets/images/comparison/desnowing/output1.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
             <div class="comparison-container">
-              <img src="assets/images/comparison/desnowing/input2.png" alt="Input" class="img-base" />
-              <img src="assets/images/comparison/desnowing/output2.png" alt="Output" class="img-overlay" />
-              <div class="comparison-line"></div>
-              <div class="comparison-handle"></div>
+              <img src="assets/images/comparison/desnowing/input2.png" class="img-base" />
+              <img src="assets/images/comparison/desnowing/output2.png" class="img-overlay" />
+              <div class="comparison-line"></div><div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
           </div>
         </div>
-    
       </div>
     </section>
 
     <section class="section alt">
       <div class="container">
         <h2>Abstract</h2>
-        <p class="abstract-text">
-          ここに概要を入力してください。
-        </p>
+        <p class="abstract-text">ここに概要を入力してください。</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <h2>Method Overview</h2>
-        <div class="card method placeholder-box">
-          [ Pipeline Figure / Architecture Diagram Placeholder ]
-        </div>
-        <p class="pipeline-description">
-          提案手法のアーキテクチャの解説を記載します。
-        </p>
+        <div class="card placeholder-box">[ Architecture Diagram ]</div>
+        <p class="pipeline-description">解説を記載します。</p>
       </div>
     </section>
 
@@ -171,22 +145,18 @@
     </section>
   </main>
 
-  <footer class="section footer">
-    <div class="container text-center">
-      <p>&copy; 2026 Nagayuki Okitsu. All rights reserved.</p>
-    </div>
+  <footer class="footer text-center">
+    <p>&copy; 2026 Nagayuki Okitsu. All rights reserved.</p>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const containers = document.querySelectorAll('.comparison-container');
-
       containers.forEach(container => {
         const slider = container.querySelector('.comparison-slider');
         const overlay = container.querySelector('.img-overlay');
         const line = container.querySelector('.comparison-line');
         const handle = container.querySelector('.comparison-handle');
-
         slider.addEventListener('input', function(e) {
           const value = e.target.value;
           overlay.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
