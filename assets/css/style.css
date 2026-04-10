@@ -42,6 +42,36 @@ h2 { font-size: 2rem; text-align: center; margin-bottom: 30px; }
 .btn-primary { background: var(--primary); color: #fff; }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
+/* ============================================================
+   アーキテクチャ図（サイズ調整版）
+   ============================================================ */
+.architecture-box {
+  width: 100%;
+  /* Resultsの3枚並びの幅（300px * 3 + gap）に合わせるため最大幅を制限 */
+  max-width: 940px; 
+  margin: 0 auto 30px; /* 中央寄せ & 下に余白 */
+  padding: 0 10px;    /* スマホ時の左右の遊び */
+  box-sizing: border-box;
+}
+
+.main-arch-img {
+  width: 100%;       /* 親要素（box）の横幅いっぱいに広げる */
+  max-width: 100%;   /* はみ出し防止 */
+  height: auto;      /* 比率を維持 */
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  /* 論文図として見やすくするために軽い影を付与 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* 提案要約テキストの幅も画像に合わせるとさらに綺麗です */
+.architecture-box + .abstract-text {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* --- 結果表示の大枠 (Results Frame) --- */
 .results-frame {
   background-color: #f1f5f9; 
