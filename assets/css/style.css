@@ -140,58 +140,74 @@ h1, h2, h3, .btn {
   overflow-x: auto; 
 }
 
-/* 画像比較ウィジェット */
+/* ============================================================
+   画像比較ウィジェット（サイズ調整版）
+   ============================================================ */
 .comparison-title {
   text-align: center;
   margin: 40px 0 20px;
+  font-size: 1.5rem; /* タイトルも少しだけ小さく調整 */
 }
 
 .comparison-container {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  
+  /* --- 【重要】ここを修正：最大幅を小さくしました --- */
+  max-width: 600px; /* 800px から 600px に変更 */
+  /* ----------------------------------------------- */
+  
+  margin: 0 auto; /* 中央配置 */
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  
+  /* 画像が小さくなったので、影も少し控えめに修正 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+  
+  /* スマホなど横幅が狭い画面でのタップ誤動作防止 */
+  touch-action: pan-y; 
 }
 
+/* コンテナ内の画像設定 */
 .img-base, .img-overlay {
   width: 100%;
-  height: auto;
+  height: auto; /* アスペクト比を維持 */
   display: block;
 }
 
+/* 上に重なる画像（復元後） */
 .img-overlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   object-fit: cover;
-  clip-path: inset(0 50% 0 0); 
+  clip-path: inset(0 50% 0 0); /* 初期状態は50% */
 }
 
+/* 中央の仕切り線 */
 .comparison-line {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
+  left: 50%; /* 初期位置 */
   width: 2px;
   background-color: #fff;
   transform: translateX(-50%);
-  pointer-events: none;
+  pointer-events: none; /* マウスイベントを透過 */
   z-index: 2;
   box-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
+/* スライダー（見えないが操作を受け付けるレイヤー） */
 .comparison-slider {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  cursor: ew-resize;
+  opacity: 0; /* 透明 */
+  cursor: ew-resize; /* 左右矢印カーソル */
   margin: 0;
   z-index: 3;
 }
