@@ -136,23 +136,21 @@ h1, h2, h3, .btn {
   overflow-x: auto; 
 }
 
-/* 画像比較コンテナ（追加） */
-/* 画像比較ウィジェットの実装 */
-.comparison-widget {
-  position: relative;
+/* 画像比較ウィジェットの実装（修正後CSS） */
+.comparison-container {
+  position: relative; /* 子要素の絶対配置の基準となる */
   width: 100%;
-  max-width: 700px; /* 画像の最大幅。必要に応じて調整してください */
+  max-width: 800px; /* 必要に応じて最大幅を調整してください */
   margin: 0 auto;
-  overflow: hidden;
+  overflow: hidden; /* コンテナをはみ出た画像を隠す */
   border-radius: 8px; /* 角を少し丸くする */
-  line-height: 0; /* 画像の下にできる余白を消す */
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
 }
 
+/* 2枚の画像を重ね合わせる */
 .img-base, .img-overlay {
   width: 100%;
   height: auto;
-  display: block;
+  display: block; /* 画像の下にできる余白を消す */
 }
 
 /* 上に重なる画像 */
@@ -160,7 +158,9 @@ h1, h2, h3, .btn {
   position: absolute;
   top: 0;
   left: 0;
-  /* 初期状態は50%の位置で切り抜き (上、右、下、左) */
+  height: 100%;
+  object-fit: cover; /* 画像の比率を保ったまま領域を埋める */
+  /* 初期状態は50%の位置で切り抜き */
   clip-path: inset(0 50% 0 0); 
 }
 
@@ -169,16 +169,16 @@ h1, h2, h3, .btn {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
+  left: 50%; /* 初期位置は中央 */
   width: 3px;
-  background-color: white;
-  transform: translateX(-50%);
+  background-color: white; /* ラインの色 */
+  transform: translateX(-50%); /* 自身の幅の半分だけ左にずらして、中央に合わせる */
   pointer-events: none; /* マウス操作をすり抜けさせる */
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-  z-index: 2;
+  z-index: 2; /* 画像より手前に表示 */
+  box-shadow: 0 0 5px rgba(0,0,0,0.5); /* 影をつけて見やすくする */
 }
 
-/* スライダー本体 (透明にして全体を覆う) */
+/* スライダー本体 (透明にして、全体を覆うように配置) */
 .comparison-slider {
   position: absolute;
   top: 0;
@@ -188,5 +188,5 @@ h1, h2, h3, .btn {
   opacity: 0; /* 姿は見えないが、操作はできる状態にする */
   cursor: ew-resize; /* 左右矢印のカーソル */
   margin: 0;
-  z-index: 3;
+  z-index: 3; /* 一番手前に配置 */
 }
