@@ -52,9 +52,14 @@
           Adjust the slider to compare the input degraded image with the restored result.
         </p>
         
-        <div id="image-comparison-widget" class="comparison-container">
-          <img src="assets/images/comparison/input.png" alt="Input degraded image" style="max-width: 48%; height: auto;" />
-          <img src="assets/images/comparison/output.png" alt="Restored output image" style="max-width: 48%; height: auto;" />
+        <div id="image-comparison-widget" class="comparison-widget">
+          <img src="assets/images/comparison/input.png" alt="Input degraded image" class="img-base" />
+          
+          <img src="assets/images/comparison/output.png" alt="Restored output image" class="img-overlay" id="imgOverlay" />
+          
+          <div class="comparison-line" id="comparisonLine"></div>
+          
+          <input type="range" min="0" max="100" value="50" class="comparison-slider" id="comparisonSlider">
         </div>
 
       </div>
@@ -98,6 +103,25 @@
     <div class="container text-center">
       <p>&copy; 2026 Nagayuki Okitsu. All rights reserved.</p>
     </div>
-  </footer>
+  </footer
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slider = document.getElementById('comparisonSlider');
+      const overlay = document.getElementById('imgOverlay');
+      const line = document.getElementById('comparisonLine');
+
+      // スライダーが動かされた時の処理
+      slider.addEventListener('input', function(e) {
+        const sliderValue = e.target.value;
+        
+        // 上の画像（復元画像）の表示範囲を変更 (右側をトリミング)
+        overlay.style.clipPath = `inset(0 ${100 - sliderValue}% 0 0)`;
+        
+        // 縦ラインの位置を移動
+        line.style.left = `${sliderValue}%`;
+      });
+    });
+  </script>
 </body>
 </html>
