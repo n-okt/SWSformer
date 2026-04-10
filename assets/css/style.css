@@ -57,6 +57,35 @@ h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
 .button-row { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
 
 /* ============================================================
+   Method Overview 画像の設定
+   ============================================================ */
+.method-box {
+  width: 100%;
+  max-width: 940px; /* SWS-SAと同じ最大幅 */
+  margin: 0 auto 30px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.method-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0;
+  /* アーキテクチャ図と同様、影をつけない */
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 説明文の幅も画像に合わせる */
+.pipeline-description {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
    2. アーキテクチャ図（SWS-SA）
    ============================================================ */
 .architecture-box {
