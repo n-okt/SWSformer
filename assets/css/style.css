@@ -1,4 +1,6 @@
-/* ベース設定 */
+/* ============================================================
+   ベース設定 & 変数
+   ============================================================ */
 :root {
   --primary: #0f172a;
   --accent: #3b82f6;
@@ -22,41 +24,50 @@ h1, h2, h3, .btn {
   color: var(--primary); 
 }
 
+/* レイアウト */
 .container { 
-  max-width: 900px; 
+  max-width: 1000px; /* 300pxの画像3つ + 余白が収まるサイズ */
   margin: 0 auto; 
   padding: 0 20px; 
 }
 
-.text-center { 
-  text-align: center; 
-}
+.text-center { text-align: center; }
 
-.subtitle {
-  color: var(--text-light);
-  margin-bottom: 30px;
-}
-
-/* セクションとレイアウト */
+/* セクション設定 */
 .section { padding: 60px 0; }
 .section.alt { 
   background: var(--bg-alt); 
   border-top: 1px solid var(--border); 
   border-bottom: 1px solid var(--border); 
 }
-.section h2 { 
+
+.tldr-section {
+  padding-top: 20px; /* ヒーローエリアとの距離を短縮 */
+}
+
+h2 { 
   font-size: 2rem; 
   text-align: center; 
   margin-bottom: 30px; 
 }
+
+.results-title {
+  font-size: 2.5rem; /* 文字を大きく設定 */
+  margin: 80px 0 40px;
+  font-weight: 700;
+}
+
 .abstract-text, .pipeline-description { 
   font-size: 1.1rem; 
   line-height: 1.8; 
 }
 
-/* ヒーロー（一番上の部分） */
+/* ============================================================
+   ヒーローセクション
+   ============================================================ */
 .hero { text-align: center; padding: 80px 0 60px; }
 .hero h1 { font-size: 2.2rem; margin: 0 0 20px; }
+
 .authors { 
   display: flex; 
   justify-content: center; 
@@ -64,20 +75,20 @@ h1, h2, h3, .btn {
   font-size: 1.1rem; 
   margin-bottom: 15px; 
 }
+
 .author-link { 
   color: var(--primary); 
   text-decoration: none; 
   border-bottom: 1px dotted #cbd5e1; 
 }
+
 .affiliations { font-size: 0.95rem; color: var(--text-light); }
 
-/* 学会名のスタイル */
 .venue {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--accent);
-  margin-top: 5px;
-  font-family: 'Space Grotesk', sans-serif;
+  margin-top: 10px;
 }
 
 /* ボタン */
@@ -87,6 +98,7 @@ h1, h2, h3, .btn {
   gap: 15px; 
   margin-top: 30px; 
 }
+
 .btn { 
   display: inline-flex;
   align-items: center;
@@ -100,75 +112,47 @@ h1, h2, h3, .btn {
   background: var(--bg-alt); 
   transition: 0.2s; 
 }
+
 .btn-primary { 
   background: var(--primary); 
   color: #fff; 
   border-color: var(--primary); 
 }
+
 .btn:hover { 
   transform: translateY(-2px); 
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); 
 }
 
-/* カードとプレースホルダー */
-.card { 
-  background: var(--bg); 
-  border: 1px solid var(--border); 
-  border-radius: 12px; 
-  padding: 24px; 
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
-}
-.placeholder-box { 
-  background: #e2e8f0; 
-  color: var(--text-light); 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  height: 200px; 
-  font-weight: 500; 
-  text-align: center; 
-}
-.method.placeholder-box { height: 300px; margin-bottom: 20px; }
-
-/* コードブロック (BibTeX) */
-.bibtex { 
-  background: var(--primary); 
-  color: #e2e8f0; 
-  padding: 20px; 
-  border-radius: 12px; 
-  font-family: 'Courier New', monospace; 
-  overflow-x: auto; 
-}
-
-/* --- レイアウトの基本枠を広げる --- */
-.container { 
-  max-width: 1000px; /* 900pxから1000pxに拡大 */
-  margin: 0 auto; 
-  padding: 0 20px; 
-}
-
-/* --- 画像比較グリッド --- */
+/* ============================================================
+   画像比較ウィジェット
+   ============================================================ */
 .comparison-grid {
   display: flex;
   justify-content: center;
-  gap: 30px; /* 画像間の間隔を少し広めに設定 */
-  flex-wrap: wrap; /* 画面が非常に狭い時だけ折り返す */
-  margin-top: 30px;
+  gap: 30px; /* 画像間の間隔 */
+  flex-wrap: wrap; /* 画面幅に合わせて折り返し */
+}
+
+.comparison-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .comparison-container {
   position: relative;
-  width: 300px; /* 200pxから300pxに変更 */
-  height: 300px; /* 正方形で統一（画像の比率に合わせる場合は auto にしてください） */
+  width: 300px; /* 指定のサイズ */
+  height: 300px;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  background: #eee;
+  background: #f1f5f9;
 }
 
 .img-base, .img-overlay {
   width: 100%;
-  height: 100%; /* コンテナいっぱいに表示 */
+  height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -177,10 +161,10 @@ h1, h2, h3, .btn {
   position: absolute;
   top: 0;
   left: 0;
-  clip-path: inset(0 50% 0 0);
+  clip-path: inset(0 50% 0 0); /* 初期値50% */
 }
 
-/* --- 縦ラインとハンドル（◯） --- */
+/* 縦ライン */
 .comparison-line {
   position: absolute;
   top: 0;
@@ -191,26 +175,28 @@ h1, h2, h3, .btn {
   transform: translateX(-50%);
   pointer-events: none;
   z-index: 2;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
+/* 中央のハンドル（矢印付きの◯） */
 .comparison-handle {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40px; /* 300pxに合わせて少し大きく調整 */
+  width: 40px;
   height: 40px;
   background: #fff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   z-index: 4;
   pointer-events: none;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* 矢印（CSS） */
+/* 矢印アイコンの作成 */
 .comparison-handle::before,
 .comparison-handle::after {
   content: '';
@@ -223,14 +209,15 @@ h1, h2, h3, .btn {
 
 .comparison-handle::before {
   border-right: 8px solid var(--primary);
-  left: 7px;
+  left: 8px;
 }
 
 .comparison-handle::after {
   border-left: 8px solid var(--primary);
-  right: 7px;
+  right: 8px;
 }
 
+/* 透明なスライダー（操作用） */
 .comparison-slider {
   position: absolute;
   top: 0;
@@ -241,4 +228,40 @@ h1, h2, h3, .btn {
   cursor: ew-resize;
   margin: 0;
   z-index: 5;
+}
+
+/* ============================================================
+   その他コンポーネント
+   ============================================================ */
+.card { 
+  background: var(--bg); 
+  border: 1px solid var(--border); 
+  border-radius: 12px; 
+  padding: 24px; 
+}
+
+.placeholder-box { 
+  background: #e2e8f0; 
+  color: var(--text-light); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  height: 300px; 
+  font-weight: 500; 
+  margin-bottom: 20px;
+}
+
+.bibtex { 
+  background: var(--primary); 
+  color: #e2e8f0; 
+  padding: 20px; 
+  border-radius: 12px; 
+  font-family: 'Courier New', monospace; 
+  overflow-x: auto; 
+}
+
+.footer {
+  padding: 40px 0;
+  color: var(--text-light);
+  font-size: 0.9rem;
 }
