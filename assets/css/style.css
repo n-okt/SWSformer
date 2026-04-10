@@ -1,1 +1,46 @@
+/* ベース設定 */
+:root {
+  --primary: #0f172a;
+  --accent: #3b82f6;
+  --text: #334155;
+  --bg: #ffffff;
+  --bg-alt: #f8fafc;
+  --border: #e2e8f0;
+}
+body {
+  margin: 0; font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--text); background: var(--bg); line-height: 1.6;
+}
+h1, h2, h3, .kicker, .btn { font-family: 'Space Grotesk', sans-serif; color: var(--primary); }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.text-center { text-align: center; color: #64748b; }
 
+/* セクションとレイアウト */
+.section { padding: 60px 0; }
+.section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.section h2 { font-size: 2rem; text-align: center; margin-bottom: 30px; }
+.abstract-text, .pipeline-description { font-size: 1.1rem; line-height: 1.8; }
+
+/* ヒーロー（一番上の部分） */
+.hero { text-align: center; padding: 80px 0 60px; }
+.kicker { font-weight: 700; color: var(--accent); letter-spacing: 1px; margin-bottom: 10px; }
+.hero h1 { font-size: 2.2rem; margin: 0 0 20px; }
+.subtitle { font-size: 1.2rem; color: #64748b; margin-bottom: 30px; }
+.authors { display: flex; justify-content: center; gap: 20px; font-size: 1.1rem; margin-bottom: 15px; }
+.author-link { color: var(--primary); text-decoration: none; border-bottom: 1px dotted #cbd5e1; }
+.affiliations { font-size: 0.95rem; color: #64748b; }
+
+/* ボタン */
+.button-row { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+.btn { padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; border: 1px solid var(--border); color: var(--primary); background: var(--bg-alt); transition: 0.2s; }
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+
+/* カードとプレースホルダー（画像代わり） */
+.card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.video-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.placeholder-box { background: #e2e8f0; color: #64748b; display: flex; align-items: center; justify-content: center; height: 200px; font-weight: 500; text-align: center; }
+.method.placeholder-box { height: 300px; margin-bottom: 20px; }
+
+/* コードブロック (BibTeX) */
+.bibtex { background: var(--primary); color: #e2e8f0; padding: 20px; border-radius: 12px; font-family: monospace; overflow-x: auto; }
