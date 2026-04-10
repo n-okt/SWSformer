@@ -75,6 +75,20 @@ h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
   border: none !important;
 }
 
+/* 説明文内の引用リンクの装飾 */
+.pipeline-description a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.3); /* 薄い下線 */
+  transition: all 0.2s ease;
+}
+
+.pipeline-description a:hover {
+  color: var(--accent-red); /* ホバー時に学会カラーの赤にする */
+  border-bottom: 1px solid var(--accent-red);
+  background-color: rgba(225, 29, 72, 0.05); /* ほんのり背景色 */
+}
+
 /* ============================================================
    結果表示（スライダー & グリッド）
    ============================================================ */
