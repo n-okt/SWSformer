@@ -1,11 +1,8 @@
-/* ============================================================
-   ベース設定 & 変数
-   ============================================================ */
+/* ベース設定 */
 :root {
   --primary: #0f172a;
   --accent: #3b82f6;
   --text: #334155;
-  --text-light: #64748b;
   --bg: #ffffff;
   --bg-alt: #f8fafc;
   --border: #e2e8f0;
@@ -24,50 +21,37 @@ h1, h2, h3, .btn {
   color: var(--primary); 
 }
 
-/* レイアウト */
 .container { 
-  max-width: 1000px; /* 300pxの画像3つ + 余白が収まるサイズ */
+  max-width: 900px; 
   margin: 0 auto; 
   padding: 0 20px; 
 }
 
-.text-center { text-align: center; }
+.text-center { 
+  text-align: center; 
+  color: #64748b; 
+}
 
-/* セクション設定 */
+/* セクションとレイアウト */
 .section { padding: 60px 0; }
 .section.alt { 
   background: var(--bg-alt); 
   border-top: 1px solid var(--border); 
   border-bottom: 1px solid var(--border); 
 }
-
-.tldr-section {
-  padding-top: 20px; /* ヒーローエリアとの距離を短縮 */
-}
-
-h2 { 
+.section h2 { 
   font-size: 2rem; 
   text-align: center; 
   margin-bottom: 30px; 
 }
-
-.results-title {
-  font-size: 2.5rem; /* 文字を大きく設定 */
-  margin: 80px 0 40px;
-  font-weight: 700;
-}
-
 .abstract-text, .pipeline-description { 
   font-size: 1.1rem; 
   line-height: 1.8; 
 }
 
-/* ============================================================
-   ヒーローセクション
-   ============================================================ */
+/* ヒーロー（一番上の部分） */
 .hero { text-align: center; padding: 80px 0 60px; }
 .hero h1 { font-size: 2.2rem; margin: 0 0 20px; }
-
 .authors { 
   display: flex; 
   justify-content: center; 
@@ -75,20 +59,20 @@ h2 {
   font-size: 1.1rem; 
   margin-bottom: 15px; 
 }
-
 .author-link { 
   color: var(--primary); 
   text-decoration: none; 
   border-bottom: 1px dotted #cbd5e1; 
 }
+.affiliations { font-size: 0.95rem; color: #64748b; }
 
-.affiliations { font-size: 0.95rem; color: var(--text-light); }
-
+/* 学会名のスタイル */
 .venue {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--accent);
-  margin-top: 10px;
+  margin-top: 5px;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 /* ボタン */
@@ -98,7 +82,6 @@ h2 {
   gap: 15px; 
   margin-top: 30px; 
 }
-
 .btn { 
   display: inline-flex;
   align-items: center;
@@ -112,156 +95,103 @@ h2 {
   background: var(--bg-alt); 
   transition: 0.2s; 
 }
-
 .btn-primary { 
   background: var(--primary); 
   color: #fff; 
   border-color: var(--primary); 
 }
-
 .btn:hover { 
   transform: translateY(-2px); 
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); 
 }
+.btn svg { flex-shrink: 0; }
+
+/* カードとプレースホルダー（画像代わり） */
+.card { 
+  background: var(--bg); 
+  border: 1px solid var(--border); 
+  border-radius: 12px; 
+  padding: 24px; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
+}
+.placeholder-box { 
+  background: #e2e8f0; 
+  color: #64748b; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  height: 200px; 
+  font-weight: 500; 
+  text-align: center; 
+}
+.method.placeholder-box { height: 300px; margin-bottom: 20px; }
+
+/* コードブロック (BibTeX) */
+.bibtex { 
+  background: var(--primary); 
+  color: #e2e8f0; 
+  padding: 20px; 
+  border-radius: 12px; 
+  font-family: monospace; 
+  overflow-x: auto; 
+}
 
 /* ============================================================
-   画像比較ウィジェット
+   画像比較ウィジェット（修正版）
    ============================================================ */
-.comparison-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px; /* 画像間の間隔 */
-  flex-wrap: wrap; /* 画面幅に合わせて折り返し */
-}
-
-.comparison-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .comparison-container {
-  position: relative;
-  width: 300px; /* 指定のサイズ */
-  height: 300px;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  background: #f1f5f9;
+  position: relative; /* 子要素の絶対配置の基準となる */
+  width: 100%;
+  max-width: 600px; /* 必要に応じて最大幅を調整してください */
+  margin: 0 auto;
+  overflow: hidden; /* コンテナをはみ出た画像を隠す */
+  border-radius: 8px; /* 角を少し丸くする */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 影をつけて見やすくする */
+  touch-action: pan-y; /* スマホなどでの操作を安定させる */
 }
 
+/* 2枚の画像を重ね合わせる */
 .img-base, .img-overlay {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  height: auto; /* アスペクト比を維持。横幅全体に収める */
+  display: block; /* 画像の下にできる余白を消す */
 }
 
+/* 上に重なる画像 */
 .img-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  clip-path: inset(0 50% 0 0); /* 初期値50% */
+  /* height: 100%; と object-fit: cover; を削除 */
+  /* これにより、width: 100%; height: auto; が適用され、横幅全体が表示されます */
+  
+  /* 初期状態は50%の位置で切り抜き */
+  clip-path: inset(0 50% 0 0); 
 }
 
-/* 縦ライン */
+/* 中央を区切る縦ライン */
 .comparison-line {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%;
-  width: 2px;
-  background-color: #fff;
-  transform: translateX(-50%);
-  pointer-events: none;
-  z-index: 2;
-  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+  left: 50%; /* 初期位置は中央 */
+  width: 3px;
+  background-color: white; /* ラインの色 */
+  transform: translateX(-50%); /* 自身の幅の半分だけ左にずらして、中央に合わせる */
+  pointer-events: none; /* マウス操作をすり抜けさせる */
+  z-index: 2; /* 画像より手前に表示 */
+  box-shadow: 0 0 5px rgba(0,0,0,0.5); /* 影をつけて見やすくする */
 }
 
-/* 中央のハンドル（矢印付きの◯） */
-.comparison-handle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  background: #fff;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  pointer-events: none;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 矢印アイコンの作成 */
-.comparison-handle::before,
-.comparison-handle::after {
-  content: '';
-  width: 0;
-  height: 0;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  position: absolute;
-}
-
-.comparison-handle::before {
-  border-right: 8px solid var(--primary);
-  left: 8px;
-}
-
-.comparison-handle::after {
-  border-left: 8px solid var(--primary);
-  right: 8px;
-}
-
-/* 透明なスライダー（操作用） */
+/* スライダー本体 (透明にして、全体を覆うように配置) */
 .comparison-slider {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  cursor: ew-resize;
+  opacity: 0; /* 姿は見えないが、操作はできる状態にする */
+  cursor: ew-resize; /* 左右矢印のカーソル */
   margin: 0;
-  z-index: 5;
-}
-
-/* ============================================================
-   その他コンポーネント
-   ============================================================ */
-.card { 
-  background: var(--bg); 
-  border: 1px solid var(--border); 
-  border-radius: 12px; 
-  padding: 24px; 
-}
-
-.placeholder-box { 
-  background: #e2e8f0; 
-  color: var(--text-light); 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  height: 300px; 
-  font-weight: 500; 
-  margin-bottom: 20px;
-}
-
-.bibtex { 
-  background: var(--primary); 
-  color: #e2e8f0; 
-  padding: 20px; 
-  border-radius: 12px; 
-  font-family: 'Courier New', monospace; 
-  overflow-x: auto; 
-}
-
-.footer {
-  padding: 40px 0;
-  color: var(--text-light);
-  font-size: 0.9rem;
+  z-index: 3; /* 一番手前に配置 */
 }
