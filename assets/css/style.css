@@ -44,3 +44,23 @@ h1, h2, h3, .kicker, .btn { font-family: 'Space Grotesk', sans-serif; color: var
 
 /* コードブロック (BibTeX) */
 .bibtex { background: var(--primary); color: #e2e8f0; padding: 20px; border-radius: 12px; font-family: monospace; overflow-x: auto; }
+
+/* 学会名のスタイル */
+.venue {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 5px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ボタン内のアイコンと文字の間隔 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* アイコンとテキストの距離 */
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
