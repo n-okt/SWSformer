@@ -1,6 +1,7 @@
 :root {
   --primary: #0f172a;
-  --accent: #3b82f6;
+  --accent-red: #e11d48; /* IEEEなどの学会ロゴに多い赤色系 */
+  --accent-blue: #3b82f6;
   --text: #334155;
   --text-light: #64748b;
   --bg: #ffffff;
@@ -21,58 +22,68 @@ h1, h2, h3, .btn { font-family: 'Space Grotesk', sans-serif; color: var(--primar
 .section { padding: 60px 0; }
 .section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .tldr-section { padding-top: 20px; }
-h2 { font-size: 2rem; text-align: center; margin-bottom: 30px; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
 .abstract-text { font-size: 1.1rem; line-height: 1.8; }
 
-/* ヒーローエリア */
-.hero { text-align: center; padding: 60px 0 40px; }
-.hero h1 { font-size: 2.2rem; margin-bottom: 20px; }
+/* ============================================================
+   1. ヒーローエリア（タイトル・ボタン）
+   ============================================================ */
+.hero { 
+  text-align: center; 
+  /* ボタンと下の図の距離を縮めるため、下部パディングを最小限に (40px -> 10px) */
+  padding: 60px 0 10px; 
+}
+
+.hero h1 { 
+  /* タイトルをさらに大きく強調 (2.2rem -> 3rem) */
+  font-size: 3rem; 
+  margin-bottom: 20px; 
+  line-height: 1.1;
+}
+
 .authors { display: flex; justify-content: center; gap: 20px; font-size: 1.1rem; }
 .author-link { color: var(--primary); text-decoration: none; border-bottom: 1px dotted #ccc; }
 .affiliations { color: var(--text-light); margin-top: 10px; }
-.venue { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin-top: 10px; }
 
-/* ボタン */
-.button-row { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
-.btn { 
-  display: inline-flex; align-items: center; gap: 10px; padding: 10px 24px; 
-  border-radius: 30px; text-decoration: none; font-weight: 600; 
-  border: 1px solid var(--border); color: var(--primary); background: var(--bg-alt); transition: 0.2s; 
+/* 学会名を赤色寄りに変更 */
+.venue { 
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--accent-red); 
+  margin-top: 10px; 
 }
-.btn-primary { background: var(--primary); color: #fff; }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+/* ボタン行 */
+.button-row { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
 
 /* ============================================================
-   アーキテクチャ図（サイズ調整版）
+   2. アーキテクチャ図（SWS-SA）
    ============================================================ */
 .architecture-box {
   width: 100%;
-  /* Resultsの3枚並びの幅（300px * 3 + gap）に合わせるため最大幅を制限 */
   max-width: 940px; 
-  margin: 0 auto 30px; /* 中央寄せ & 下に余白 */
-  padding: 0 10px;    /* スマホ時の左右の遊び */
+  margin: 0 auto 30px;
+  padding: 0 10px;
   box-sizing: border-box;
 }
 
 .main-arch-img {
-  width: 100%;       /* 親要素（box）の横幅いっぱいに広げる */
-  max-width: 100%;   /* はみ出し防止 */
-  height: auto;      /* 比率を維持 */
+  width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto;
-  border-radius: 8px;
-  /* 論文図として見やすくするために軽い影を付与 */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 0; /* 角丸をなしにする場合は0に */
+  /* 影や装飾をすべて排除 */
+  box-shadow: none !important; 
+  border: none !important;
 }
 
-/* 提案要約テキストの幅も画像に合わせるとさらに綺麗です */
-.architecture-box + .abstract-text {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
+/* 上部パディングをゼロにするユーティリティ */
+.pt-0 { padding-top: 0 !important; }
 
-/* --- 結果表示の大枠 (Results Frame) --- */
+/* ============================================================
+   3. スライダー & 結果表示
+   ============================================================ */
 .results-frame {
   background-color: #f1f5f9; 
   padding: 40px 20px;
@@ -88,26 +99,23 @@ h2 { font-size: 2rem; text-align: center; margin-bottom: 30px; }
   font-weight: 700;
 }
 
-/* フレキシブルなグリッド（横並び） */
 .results-grid {
   display: flex;
-  justify-content: space-around; /* 画像同士の間隔を自動調整 */
+  justify-content: space-around;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap; /* 画面幅が足りない時は折り返し */
+  flex-wrap: wrap;
 }
 
-/* スライダーコンテナ（高さを250pxに固定） */
 .comparison-container {
   position: relative;
-  height: 250px; /* 固定高さ */
-  width: fit-content; /* 画像の幅に合わせる */
+  height: 250px;
+  width: fit-content;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* 画像：比率を維持して高さを揃える */
 .img-base, .img-overlay {
   height: 250px;
   width: auto;
@@ -119,7 +127,6 @@ h2 { font-size: 2rem; text-align: center; margin-bottom: 30px; }
   clip-path: inset(0 50% 0 0);
 }
 
-/* スライダーパーツ */
 .comparison-line {
   position: absolute; top: 0; bottom: 0; left: 50%;
   width: 2px; background: #fff; transform: translateX(-50%);
@@ -143,7 +150,20 @@ h2 { font-size: 2rem; text-align: center; margin-bottom: 30px; }
   opacity: 0; cursor: ew-resize; z-index: 5; margin: 0;
 }
 
-/* その他パーツ */
+/* ============================================================
+   4. その他
+   ============================================================ */
+.btn { 
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 24px; 
+  border-radius: 30px; text-decoration: none; font-weight: 600; 
+  border: 1px solid var(--border); color: var(--primary); background: var(--bg-alt); transition: 0.2s; 
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+.text-justify { text-align: justify; }
+.mt-4 { margin-top: 1.5rem; }
+
 .card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 25px; }
 .placeholder-box { background: #e2e8f0; color: var(--text-light); display: flex; align-items: center; justify-content: center; height: 250px; border-radius: 8px; }
 .bibtex { background: var(--primary); color: #cbd5e1; padding: 20px; border-radius: 10px; font-family: monospace; overflow-x: auto; }
