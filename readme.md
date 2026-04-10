@@ -1,6 +1,3 @@
-
-Please visit [github](https://github.com/n-okt/SWSformer) if you are currently viewing a github-pages.
-
 ## SWSformer: Subwindow Shuffle Transformer for Image Restoration
 
 This is the official PyTorch implementation of the paper [SWSformer: Subwindow Shuffle Transformer for Image Restoration (IEEE Access, 2025)](https://ieeexplore.ieee.org/document/11202932?source=authoralert)
