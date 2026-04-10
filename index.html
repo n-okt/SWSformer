@@ -44,46 +44,113 @@
       <div class="container">
         <h2>TL;DR</h2>
         <p class="abstract-text">
-          We propose <strong>SWSformer (Subwindow Shuffle Transformer)</strong>, a highly efficient and novel Transformer-based architecture for image restoration. By introducing a subwindow shuffle mechanism, our model significantly reduces computational overhead while effectively capturing both local and global dependencies, achieving state-of-the-art performance in various image restoration tasks such as denoising and deblurring.
+          We propose <strong>SWSformer (Subwindow Shuffle Transformer)</strong>, a highly efficient and novel Transformer-based architecture for image restoration. By introducing a subwindow shuffle mechanism, our model significantly reduces computational overhead while effectively capturing both local and global dependencies.
         </p>
-    
+
         <h2 class="results-title">Denoising Results</h2>
-        
         <div class="comparison-grid">
-          
           <div class="comparison-item">
-            <p class="task-label">Deblurring (ブレ除去)</p>
+            <p class="task-label">Noise Level 15</p>
             <div class="comparison-container">
-              <img src="assets/images/comparison/blur_input.png" alt="Blurry Input" class="img-base" />
-              <img src="assets/images/comparison/blur_output.png" alt="Deblurred Output" class="img-overlay" />
+              <img src="assets/images/denoising/input1.png" alt="Input" class="img-base" />
+              <img src="assets/images/denoising/output1.png" alt="Output" class="img-overlay" />
               <div class="comparison-line"></div>
               <div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
           </div>
-    
           <div class="comparison-item">
-            <p class="task-label">Deraining (雨除去)</p>
+            <p class="task-label">Noise Level 25</p>
             <div class="comparison-container">
-              <img src="assets/images/comparison/rain_input.png" alt="Rainy Input" class="img-base" />
-              <img src="assets/images/comparison/rain_output.png" alt="Derained Output" class="img-overlay" />
+              <img src="assets/images/denoising/input2.png" alt="Input" class="img-base" />
+              <img src="assets/images/denoising/output2.png" alt="Output" class="img-overlay" />
               <div class="comparison-line"></div>
               <div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
           </div>
-    
           <div class="comparison-item">
-            <p class="task-label">Desnowing (雪除去)</p>
+            <p class="task-label">Noise Level 50</p>
             <div class="comparison-container">
-              <img src="assets/images/comparison/snow_input.png" alt="Snowy Input" class="img-base" />
-              <img src="assets/images/comparison/snow_output.png" alt="Desnowed Output" class="img-overlay" />
+              <img src="assets/images/denoising/input3.png" alt="Input" class="img-base" />
+              <img src="assets/images/denoising/output3.png" alt="Output" class="img-overlay" />
               <div class="comparison-line"></div>
               <div class="comparison-handle"></div>
               <input type="range" min="0" max="100" value="50" class="comparison-slider">
             </div>
           </div>
-    
+        </div>
+
+        <h2 class="results-title">Deblurring Results</h2>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <p class="task-label">Motion Blur 1</p>
+            <div class="comparison-container">
+              <img src="assets/images/deblurring/input1.png" alt="Input" class="img-base" />
+              <img src="assets/images/deblurring/output1.png" alt="Output" class="img-overlay" />
+              <div class="comparison-line"></div>
+              <div class="comparison-handle"></div>
+              <input type="range" min="0" max="100" value="50" class="comparison-slider">
+            </div>
+          </div>
+          <div class="comparison-item">
+            <p class="task-label">Motion Blur 2</p>
+            <div class="comparison-container">
+              <img src="assets/images/deblurring/input2.png" alt="Input" class="img-base" />
+              <img src="assets/images/deblurring/output2.png" alt="Output" class="img-overlay" />
+              <div class="comparison-line"></div>
+              <div class="comparison-handle"></div>
+              <input type="range" min="0" max="100" value="50" class="comparison-slider">
+            </div>
+          </div>
+        </div>
+
+        <h2 class="results-title">Deraining Results</h2>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <p class="task-label">Heavy Rain 1</p>
+            <div class="comparison-container">
+              <img src="assets/images/deraining/input1.png" alt="Input" class="img-base" />
+              <img src="assets/images/deraining/output1.png" alt="Output" class="img-overlay" />
+              <div class="comparison-line"></div>
+              <div class="comparison-handle"></div>
+              <input type="range" min="0" max="100" value="50" class="comparison-slider">
+            </div>
+          </div>
+          <div class="comparison-item">
+            <p class="task-label">Heavy Rain 2</p>
+            <div class="comparison-container">
+              <img src="assets/images/deraining/input2.png" alt="Input" class="img-base" />
+              <img src="assets/images/deraining/output2.png" alt="Output" class="img-overlay" />
+              <div class="comparison-line"></div>
+              <div class="comparison-handle"></div>
+              <input type="range" min="0" max="100" value="50" class="comparison-slider">
+            </div>
+          </div>
+        </div>
+
+        <h2 class="results-title">Desnowing Results</h2>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <p class="task-label">Snow Scene 1</p>
+            <div class="comparison-container">
+              <img src="assets/images/desnowing/input1.png" alt="Input" class="img-base" />
+              <img src="assets/images/desnowing/output1.png" alt="Output" class="img-overlay" />
+              <div class="comparison-line"></div>
+              <div class="comparison-handle"></div>
+              <input type="range" min="0" max="100" value="50" class="comparison-slider">
+            </div>
+          </div>
+          <div class="comparison-item">
+            <p class="task-label">Snow Scene 2</p>
+            <div class="comparison-container">
+              <img src="assets/images/desnowing/input2.png" alt="Input" class="img-base" />
+              <img src="assets/images/desnowing/output2.png" alt="Output" class="img-overlay" />
+              <div class="comparison-line"></div>
+              <div class="comparison-handle"></div>
+              <input type="range" min="0" max="100" value="50" class="comparison-slider">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -129,23 +196,23 @@
   </footer>
 
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const containers = document.querySelectorAll('.comparison-container');
+    document.addEventListener('DOMContentLoaded', function() {
+      const containers = document.querySelectorAll('.comparison-container');
 
-    containers.forEach(container => {
-      const slider = container.querySelector('.comparison-slider');
-      const overlay = container.querySelector('.img-overlay');
-      const line = container.querySelector('.comparison-line');
-      const handle = container.querySelector('.comparison-handle');
+      containers.forEach(container => {
+        const slider = container.querySelector('.comparison-slider');
+        const overlay = container.querySelector('.img-overlay');
+        const line = container.querySelector('.comparison-line');
+        const handle = container.querySelector('.comparison-handle');
 
-      slider.addEventListener('input', function(e) {
-        const value = e.target.value;
-        overlay.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
-        line.style.left = `${value}%`;
-        handle.style.left = `${value}%`;
+        slider.addEventListener('input', function(e) {
+          const value = e.target.value;
+          overlay.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+          line.style.left = `${value}%`;
+          handle.style.left = `${value}%`;
+        });
       });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
