@@ -1,6 +1,9 @@
+/* ============================================================
+   ベース設定
+   ============================================================ */
 :root {
   --primary: #0f172a;
-  --accent-red: #e11d48; /* IEEEなどの学会ロゴに多い赤色系 */
+  --accent-red: #e11d48; /* IEEE Access向けの赤 */
   --accent-blue: #3b82f6;
   --text: #334155;
   --text-light: #64748b;
@@ -18,106 +21,68 @@ h1, h2, h3, .btn { font-family: 'Space Grotesk', sans-serif; color: var(--primar
 .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 .text-center { text-align: center; }
 
-/* セクション設定 */
+/* セクション */
 .section { padding: 60px 0; }
 .section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.tldr-section { padding-top: 20px; }
+.pt-0 { padding-top: 0 !important; }
+
 h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
 .abstract-text { font-size: 1.1rem; line-height: 1.8; }
+.text-justify { text-align: justify; }
 
 /* ============================================================
-   1. ヒーローエリア（タイトル・ボタン）
+   ヒーローエリア（タイトル・著者・ボタン）
    ============================================================ */
 .hero { 
   text-align: center; 
-  /* ボタンと下の図の距離を縮めるため、下部パディングを最小限に (40px -> 10px) */
-  padding: 60px 0 10px; 
+  padding: 60px 0 10px; /* 下部余白を圧縮 */
 }
 
 .hero h1 { 
-  /* タイトルをさらに大きく強調 (2.2rem -> 3rem) */
-  font-size: 3rem; 
+  font-size: 3rem; /* 巨大化 */
   margin-bottom: 20px; 
   line-height: 1.1;
+  font-weight: 700;
 }
 
-.authors { display: flex; justify-content: center; gap: 20px; font-size: 1.1rem; }
+.authors { display: flex; justify-content: center; gap: 20px; font-size: 1.15rem; margin-bottom: 10px; }
 .author-link { color: var(--primary); text-decoration: none; border-bottom: 1px dotted #ccc; }
-.affiliations { color: var(--text-light); margin-top: 10px; }
+.affiliations { color: var(--text-light); font-size: 1rem; }
 
-/* 学会名を赤色寄りに変更 */
 .venue { 
   font-size: 1.3rem; 
   font-weight: 700; 
-  color: var(--accent-red); 
+  color: var(--accent-red); /* 赤色 */
   margin-top: 10px; 
 }
 
-/* ボタン行 */
-.button-row { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+.button-row { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
 
 /* ============================================================
-   Method Overview 画像の設定
+   図版設定（SWS-SA & Method Overview共通）
    ============================================================ */
-.method-box {
+.architecture-box, .method-box {
   width: 100%;
-  max-width: 940px; /* SWS-SAと同じ最大幅 */
+  max-width: 940px; /* スライダー枠と同期 */
   margin: 0 auto 30px;
-  padding: 0 10px;
-  box-sizing: border-box;
 }
 
-.method-img {
+.main-arch-img, .method-img {
   width: 100%;
   height: auto;
   display: block;
-  margin: 0 auto;
-  border-radius: 0;
-  /* アーキテクチャ図と同様、影をつけない */
-  box-shadow: none !important;
+  box-shadow: none !important; /* 影なし */
   border: none !important;
 }
 
-/* 説明文の幅も画像に合わせる */
-.pipeline-description {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* ============================================================
-   2. アーキテクチャ図（SWS-SA）
-   ============================================================ */
-.architecture-box {
-  width: 100%;
-  max-width: 940px; 
-  margin: 0 auto 30px;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-.main-arch-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 0; /* 角丸をなしにする場合は0に */
-  /* 影や装飾をすべて排除 */
-  box-shadow: none !important; 
-  border: none !important;
-}
-
-/* 上部パディングをゼロにするユーティリティ */
-.pt-0 { padding-top: 0 !important; }
-
-/* ============================================================
-   3. スライダー & 結果表示
+   結果表示（スライダー & グリッド）
    ============================================================ */
 .results-frame {
   background-color: #f1f5f9; 
   padding: 40px 20px;
   border-radius: 16px;
-  margin: 50px 0;
+  margin: 40px 0;
   border: 1px solid var(--border);
 }
 
@@ -143,6 +108,7 @@ h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: #fff;
 }
 
 .img-base, .img-overlay {
@@ -156,11 +122,13 @@ h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
   clip-path: inset(0 50% 0 0);
 }
 
+/* スライダー操作パーツ */
 .comparison-line {
   position: absolute; top: 0; bottom: 0; left: 50%;
   width: 2px; background: #fff; transform: translateX(-50%);
   z-index: 2; pointer-events: none;
 }
+
 .comparison-handle {
   position: absolute; top: 50%; left: 50%;
   width: 36px; height: 36px; background: #fff; border-radius: 50%;
@@ -168,6 +136,7 @@ h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   display: flex; align-items: center; justify-content: center;
 }
+
 .comparison-handle::before, .comparison-handle::after {
   content: ''; border-top: 5px solid transparent; border-bottom: 5px solid transparent; position: absolute;
 }
@@ -180,20 +149,26 @@ h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
 }
 
 /* ============================================================
-   4. その他
+   その他
    ============================================================ */
 .btn { 
   display: inline-flex; align-items: center; gap: 10px; padding: 10px 24px; 
   border-radius: 30px; text-decoration: none; font-weight: 600; 
   border: 1px solid var(--border); color: var(--primary); background: var(--bg-alt); transition: 0.2s; 
 }
-.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-.text-justify { text-align: justify; }
 .mt-4 { margin-top: 1.5rem; }
 
 .card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 25px; }
-.placeholder-box { background: #e2e8f0; color: var(--text-light); display: flex; align-items: center; justify-content: center; height: 250px; border-radius: 8px; }
-.bibtex { background: var(--primary); color: #cbd5e1; padding: 20px; border-radius: 10px; font-family: monospace; overflow-x: auto; }
-.footer { padding: 40px 0; color: var(--text-light); }
+
+.bibtex { 
+  background: var(--primary); color: #cbd5e1; padding: 25px; 
+  border-radius: 10px; font-family: 'Courier New', monospace; font-size: 0.9rem; overflow-x: auto; 
+}
+
+.footer { padding: 60px 0; color: var(--text-light); border-top: 1px solid var(--border); background: var(--bg-alt); }
+.footer-license { font-size: 0.85rem; line-height: 1.6; max-width: 800px; margin: 0 auto; }
+.footer a { color: var(--accent-blue); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
