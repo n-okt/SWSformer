@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,7 +22,7 @@
       </div>
       
       <p class="affiliations">
-        <sup>1</sup>島根大学 (Shimane University)
+        <sup>1</sup>Shimane University
       </p>
 
       <p class="venue">IEEE Access 2025</p>
@@ -45,16 +45,47 @@
   </header>
 
   <main>
+    <section class="section">
+      <div class="container">
+        <h2>TL;DR</h2>
+        <p class="abstract-text">
+          We propose <strong>SWSformer (Subwindow Shuffle Transformer)</strong>, a highly efficient and novel Transformer-based architecture for image restoration. By introducing a subwindow shuffle mechanism, our model significantly reduces computational overhead while effectively capturing both local and global dependencies, achieving state-of-the-art performance in various image restoration tasks such as denoising and deblurring.
+        </p>
+
+        <h3 style="text-align: center; margin: 40px 0 20px;">Visual Comparison</h3>
+        <div class="video-grid-2">
+          <div class="card placeholder-box method">
+            [ Baseline / Input Degraded Image ]
+          </div>
+          <div class="card placeholder-box method">
+            [ SWSformer (Ours) Restored Image ]
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section alt">
       <div class="container">
         <h2>Abstract</h2>
         <p class="abstract-text">
-          ここに概要を入力してください。
+          [Your abstract goes here. Briefly summarize the background, challenges, the proposed SWSformer architecture, and the quantitative/qualitative improvements achieved over existing methods.]
         </p>
       </div>
     </section>
 
     <section class="section">
+      <div class="container">
+        <h2>Method Overview</h2>
+        <div class="card method placeholder-box">
+          [ Pipeline Figure / Architecture Diagram Placeholder ]
+        </div>
+        <p class="pipeline-description">
+          [Describe your architecture here. Explain the Subwindow Shuffle mechanism and how it improves computational efficiency compared to standard Vision Transformers.]
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt">
       <div class="container">
         <h2>BibTeX</h2>
         <pre class="bibtex"><code>@article{okitsu2025swsformer,
@@ -69,7 +100,7 @@
 
   <footer class="section footer">
     <div class="container text-center">
-      <p>&copy; 2026 Nagayuki Okitsu.</p>
+      <p>&copy; 2026 Nagayuki Okitsu. All rights reserved.</p>
     </div>
   </footer>
 </body>
