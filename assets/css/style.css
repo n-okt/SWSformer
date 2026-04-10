@@ -3,6 +3,7 @@
   --primary: #0f172a;
   --accent: #3b82f6;
   --text: #334155;
+  --text-light: #64748b;
   --bg: #ffffff;
   --bg-alt: #f8fafc;
   --border: #e2e8f0;
@@ -29,7 +30,11 @@ h1, h2, h3, .btn {
 
 .text-center { 
   text-align: center; 
-  color: #64748b; 
+}
+
+.subtitle {
+  color: var(--text-light);
+  margin-bottom: 30px;
 }
 
 /* セクションとレイアウト */
@@ -64,7 +69,7 @@ h1, h2, h3, .btn {
   text-decoration: none; 
   border-bottom: 1px dotted #cbd5e1; 
 }
-.affiliations { font-size: 0.95rem; color: #64748b; }
+.affiliations { font-size: 0.95rem; color: var(--text-light); }
 
 /* 学会名のスタイル */
 .venue {
@@ -104,9 +109,8 @@ h1, h2, h3, .btn {
   transform: translateY(-2px); 
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); 
 }
-.btn svg { flex-shrink: 0; }
 
-/* カードとプレースホルダー（画像代わり） */
+/* カードとプレースホルダー */
 .card { 
   background: var(--bg); 
   border: 1px solid var(--border); 
@@ -116,7 +120,7 @@ h1, h2, h3, .btn {
 }
 .placeholder-box { 
   background: #e2e8f0; 
-  color: #64748b; 
+  color: var(--text-light); 
   display: flex; 
   align-items: center; 
   justify-content: center; 
@@ -132,61 +136,62 @@ h1, h2, h3, .btn {
   color: #e2e8f0; 
   padding: 20px; 
   border-radius: 12px; 
-  font-family: monospace; 
+  font-family: 'Courier New', monospace; 
   overflow-x: auto; 
 }
 
-/* 画像比較ウィジェットの実装（修正後CSS） */
-.comparison-container {
-  position: relative; /* 子要素の絶対配置の基準となる */
-  width: 100%;
-  max-width: 800px; /* 必要に応じて最大幅を調整してください */
-  margin: 0 auto;
-  overflow: hidden; /* コンテナをはみ出た画像を隠す */
-  border-radius: 8px; /* 角を少し丸くする */
+/* 画像比較ウィジェット */
+.comparison-title {
+  text-align: center;
+  margin: 40px 0 20px;
 }
 
-/* 2枚の画像を重ね合わせる */
+.comparison-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
 .img-base, .img-overlay {
   width: 100%;
   height: auto;
-  display: block; /* 画像の下にできる余白を消す */
+  display: block;
 }
 
-/* 上に重なる画像 */
 .img-overlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  object-fit: cover; /* 画像の比率を保ったまま領域を埋める */
-  /* 初期状態は50%の位置で切り抜き */
+  object-fit: cover;
   clip-path: inset(0 50% 0 0); 
 }
 
-/* 中央を区切る縦ライン */
 .comparison-line {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 50%; /* 初期位置は中央 */
-  width: 3px;
-  background-color: white; /* ラインの色 */
-  transform: translateX(-50%); /* 自身の幅の半分だけ左にずらして、中央に合わせる */
-  pointer-events: none; /* マウス操作をすり抜けさせる */
-  z-index: 2; /* 画像より手前に表示 */
-  box-shadow: 0 0 5px rgba(0,0,0,0.5); /* 影をつけて見やすくする */
+  left: 50%;
+  width: 2px;
+  background-color: #fff;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
-/* スライダー本体 (透明にして、全体を覆うように配置) */
 .comparison-slider {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0; /* 姿は見えないが、操作はできる状態にする */
-  cursor: ew-resize; /* 左右矢印のカーソル */
+  opacity: 0;
+  cursor: ew-resize;
   margin: 0;
-  z-index: 3; /* 一番手前に配置 */
+  z-index: 3;
 }
