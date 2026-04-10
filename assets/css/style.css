@@ -137,8 +137,56 @@ h1, h2, h3, .btn {
 }
 
 /* 画像比較コンテナ（追加） */
-.comparison-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+/* 画像比較ウィジェットの実装 */
+.comparison-widget {
+  position: relative;
+  width: 100%;
+  max-width: 700px; /* 画像の最大幅。必要に応じて調整してください */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px; /* 角を少し丸くする */
+  line-height: 0; /* 画像の下にできる余白を消す */
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.img-base, .img-overlay {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 上に重なる画像 */
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 初期状態は50%の位置で切り抜き (上、右、下、左) */
+  clip-path: inset(0 50% 0 0); 
+}
+
+/* 中央を区切る縦ライン */
+.comparison-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background-color: white;
+  transform: translateX(-50%);
+  pointer-events: none; /* マウス操作をすり抜けさせる */
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+/* スライダー本体 (透明にして全体を覆う) */
+.comparison-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* 姿は見えないが、操作はできる状態にする */
+  cursor: ew-resize; /* 左右矢印のカーソル */
+  margin: 0;
+  z-index: 3;
 }
