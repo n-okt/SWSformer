@@ -47,21 +47,17 @@
           We propose <strong>SWSformer (Subwindow Shuffle Transformer)</strong>, a highly efficient and novel Transformer-based architecture for image restoration. By introducing a subwindow shuffle mechanism, our model significantly reduces computational overhead while effectively capturing both local and global dependencies, achieving state-of-the-art performance in various image restoration tasks such as denoising and deblurring.
         </p>
 
-        <h3 style="text-align: center; margin: 40px 0 20px;">Visual Comparison</h3>
-        <p class="abstract-text text-center" style="margin-bottom: 30px;">
+        <h3 class="comparison-title">Visual Comparison</h3>
+        <p class="abstract-text text-center subtitle">
           Adjust the slider to compare the input degraded image with the restored result.
         </p>
         
         <div id="image-comparison-widget" class="comparison-container">
           <img src="assets/images/comparison/input.png" alt="Input degraded image" class="img-base" />
-          
           <img src="assets/images/comparison/output.png" alt="Restored output image" class="img-overlay" id="imgOverlay" />
-          
           <div class="comparison-line" id="comparisonLine"></div>
-          
-          <input type="range" min="0" max="100" value="50" class="comparison-slider" id="comparisonSlider">
+          <input type="range" min="0" max="100" value="50" class="comparison-slider" id="comparisonSlider" aria-label="Image comparison slider">
         </div>
-
       </div>
     </section>
 
@@ -106,21 +102,14 @@
   </footer>
 
   <script>
-    // ドキュメントが読み込まれたら実行
     document.addEventListener('DOMContentLoaded', function() {
       const slider = document.getElementById('comparisonSlider');
       const overlay = document.getElementById('imgOverlay');
       const line = document.getElementById('comparisonLine');
   
-      // スライダーが動かされた時の処理
       slider.addEventListener('input', function(e) {
         const sliderValue = e.target.value;
-        
-        // 上の画像（復元画像）の表示範囲を clip-path で変更 (右側をトリミング)
-        // inset(上, 右, 下, 左) の順。右側のトリミング量を計算する
         overlay.style.clipPath = `inset(0 ${100 - sliderValue}% 0 0)`;
-        
-        // 縦ラインの位置を、スライダーの値（%）に合わせて移動
         line.style.left = `${sliderValue}%`;
       });
     });
