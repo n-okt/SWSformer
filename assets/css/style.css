@@ -32,7 +32,7 @@
 .comparison-container {
   position: relative;
   /* --- 【重要】高さを250pxに固定し、幅は画像に合わせる --- */
-  height: 250px; 
+  height: 300px; 
   width: fit-content; /* 中の画像サイズに合わせる */
   /* -------------------------------------------------- */
   overflow: hidden;
