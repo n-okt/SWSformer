@@ -30,6 +30,13 @@ h2 { font-size: 2.2rem; text-align: center; margin-bottom: 30px; }
 .abstract-text { font-size: 1.1rem; line-height: 1.8; }
 .text-justify { text-align: justify; }
 
+.abstract-text {
+  font-size: 1rem;       /* 1.1remから少し小さく */
+  line-height: 1.5;      /* 1.8から1.5へ（論文に近い密度） */
+  letter-spacing: -0.01em; /* 文字間をわずかに詰めると引き締まります */
+  margin-bottom: 20px;
+}
+
 /* ============================================================
    ヒーローエリア（タイトル・著者・ボタン）
    ============================================================ */
