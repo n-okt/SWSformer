@@ -52,7 +52,7 @@
           Adjust the slider to compare the input degraded image with the restored result.
         </p>
         
-        <div id="image-comparison-widget" class="comparison-widget">
+        <div id="image-comparison-widget" class="comparison-container">
           <img src="assets/images/comparison/input.png" alt="Input degraded image" class="img-base" />
           
           <img src="assets/images/comparison/output.png" alt="Restored output image" class="img-overlay" id="imgOverlay" />
@@ -105,20 +105,22 @@
     </div>
   </footer>
 
-<script>
+  <script>
+    // ドキュメントが読み込まれたら実行
     document.addEventListener('DOMContentLoaded', function() {
       const slider = document.getElementById('comparisonSlider');
       const overlay = document.getElementById('imgOverlay');
       const line = document.getElementById('comparisonLine');
-
+  
       // スライダーが動かされた時の処理
       slider.addEventListener('input', function(e) {
         const sliderValue = e.target.value;
         
-        // 上の画像（復元画像）の表示範囲を変更 (右側をトリミング)
+        // 上の画像（復元画像）の表示範囲を clip-path で変更 (右側をトリミング)
+        // inset(上, 右, 下, 左) の順。右側のトリミング量を計算する
         overlay.style.clipPath = `inset(0 ${100 - sliderValue}% 0 0)`;
         
-        // 縦ラインの位置を移動
+        // 縦ラインの位置を、スライダーの値（%）に合わせて移動
         line.style.left = `${sliderValue}%`;
       });
     });
