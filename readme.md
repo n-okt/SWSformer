@@ -40,7 +40,7 @@ python setup.py develop --no_cuda_ext
 |Multi-weather Nighttime image restoration|AllWeatherNight| <p align="center"> [Link](./docs/AllWeatherNight.md) |
 
 * Restoration results in our experiments can be found here: [IEEE DataPort](https://ieee-dataport.org/documents/swsformer)
-* Checkpoints for SWSformer can be found here: [Google Drive](https://drive.google.com/file/d/1GarJxMwDT6m74NLa2UCMV1YMhb7xsUX1/view)
+* Checkpoints for SWSformer can be found here: [Google Drive](https://drive.google.com/drive/folders/1vGVQRyNsiuUNJJNG0vR4Iovn49pHy-Nc)
 
 ## Citation
 If you use SWSformer, please consider citing:
